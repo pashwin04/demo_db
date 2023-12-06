@@ -1,0 +1,21 @@
+# File must be named schemachange-config.yml
+config-version: 1
+
+# Schemachange locations
+root-folder: snowflake-new/objects/scripts
+modules-folder: snowflake-new/objects/modules
+change-history-table: ADMIN_DB.SCHEMACHANGE.CHANGE_HISTORY_{{ env_var('ENV_TYPE') }}
+
+# Connection information
+snowflake-account: <orgname-accountname>
+snowflake-user: <connection-user>
+snowflake-role: <connection-role>
+snowflake-warehouse: <connection-wh>
+snowflake-database: <connection-db>
+
+# Jinja Variables
+
+# Create an environment variable in the command line before running schemachange. This will get picked up here
+# and set a Jinja variable to be used throughout scripts as needed to paramerize environments.
+vars:
+  env_type: {{ env_var('ENV_TYPE') }}
